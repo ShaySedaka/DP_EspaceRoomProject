@@ -46,7 +46,7 @@ public class CameraStateManager : MonoBehaviour
         for (int i = 0; i < _RoomCameraStates.Count; i++)
         {
             CameraState cs = _RoomCameraStates[i];
-            cs.LeftSideState = _RoomCameraStates[(i - 1 >= 0)? (i-1) : (i-1+_RoomCameraStates.Count) ];
+            cs.LeftSideState = _RoomCameraStates[(i-1 >= 0) ? (i-1) : (_RoomCameraStates.Count - 1)];
             cs.RightSideState = _RoomCameraStates[(i + 1) % (_RoomCameraStates.Count)];
         }
     }
