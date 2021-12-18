@@ -19,10 +19,4 @@ public class ToggleableYellow : Toggleable
         _sphereChild.SetActive(true);
         _cubeChild.SetActive(false);
     }
-
-    void OnMouseDown()
-    {
-        Interact();
-        Debug.Log("User interacted with yellow toggleable. Current State: " + this.CurrentToggleState.ToString());
-    }
 }

@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectible : MonoBehaviour
+public class Collectible : Interactible
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private ItemSO _item;
 
-    // Update is called once per frame
-    void Update()
+    public override void Interact()
     {
-        
+        _item.AddItemToInventory();
+        gameObject.SetActive(false);
     }
 }
