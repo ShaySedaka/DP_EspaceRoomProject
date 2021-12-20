@@ -16,14 +16,24 @@ public class ItemSO : ScriptableObject
 
     [SerializeField] public ItemIcon ItemIcon;
 
+    [SerializeField] public GameObject _instatiatedUIForItem;
+
+
+
     public void AddItemToInventory()
     {
         PlayerInventory.Instance.Inventory.Add(this);
 
-        GameObject newItemIconGO = Instantiate(_itemIconPrefab, UIManager.Instance.InventoryContainer.transform);
-
-        ItemIcon = newItemIconGO.GetComponent<ItemIcon>();
+        _instatiatedUIForItem = Instantiate(_itemIconPrefab, UIManager.Instance.InventoryContainer.transform);
+        
+        ItemIcon = _instatiatedUIForItem.GetComponent<ItemIcon>();
 
         ItemIcon.InitializeItemIcon(this);
+    }
+
+    public void RemoveItemFromInventory()
+    {
+        PlayerInventory.Instance.Inventory.Remove(this);
+        _instatiatedUIForItem.SetActive(false);
     }
 }

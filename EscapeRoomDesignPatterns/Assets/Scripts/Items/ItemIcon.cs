@@ -7,17 +7,9 @@ using UnityEngine.UI;
 public class ItemIcon : MonoBehaviour
 {
     private ItemSO _itemSORef;
-
     private Image _imageRef;
-
     private Sprite _unselectedSprite;
-
     private Sprite _selectedSprite;
-
-    private void Start()
-    {
-        
-    }
 
     public void InitializeItemIcon(ItemSO itemSORef)
     {
@@ -32,14 +24,36 @@ public class ItemIcon : MonoBehaviour
 
     public void SelectItem()
     {
-        PlayerInventory.Instance.SelectedItem.ItemIcon.UnSelectItem();
+        // if another item is selected right now, unselect it
+        if (PlayerInventory.Instance.SelectedItem != null)
+        {
+            PlayerInventory.Instance.SelectedItem.ItemIcon.UnSelectItem();
+        }
+        //make this the selected item
         PlayerInventory.Instance.SelectedItem = _itemSORef;
         _imageRef.sprite = _selectedSprite;
+
+        AttachToCursor();
     }
 
     public void UnSelectItem()
     {
         _imageRef.sprite = _unselectedSprite;
         PlayerInventory.Instance.SelectedItem = null;
+
+        DettachToCursor();
+    }
+
+    private void AttachToCursor()
+    {
+        PlayerInventory.Instance.SelectedItemCursor.sprite = _unselectedSprite;
+        PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(true);
+        Cursor.visible = false;
+    }
+
+    private void DettachToCursor()
+    {
+        PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(false);
+        Cursor.visible = true;
     }
 }
