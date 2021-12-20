@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleableDoor : Toggleable
+public class ToggleableItemRequired : Toggleable
 {
-    [SerializeField] GameObject _closedDoor;
-    [SerializeField] GameObject _openDoor;
+    [SerializeField] GameObject _offStateObject;
+    [SerializeField] GameObject _onStateObject;
     [SerializeField] string _requiredItemName;
 
 
@@ -21,8 +21,8 @@ public class ToggleableDoor : Toggleable
     {
         if (ToggleConditionCheck())
         {
-            _closedDoor.SetActive(false);
-            _openDoor.SetActive(true);
+            _offStateObject.SetActive(false);
+            _onStateObject.SetActive(true);
 
             OnToggleSuccess();
         }
