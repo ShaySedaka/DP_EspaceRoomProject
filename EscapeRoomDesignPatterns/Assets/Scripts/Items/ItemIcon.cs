@@ -14,8 +14,6 @@ public class ItemIcon : MonoBehaviour
 
     private Sprite _selectedSprite;
 
-    public static Action OnSelect;
-
     private void Start()
     {
         
@@ -30,20 +28,18 @@ public class ItemIcon : MonoBehaviour
         _selectedSprite = itemSORef.ItemSelected;
 
         _itemSORef.ItemIcon = this;
-
-        OnSelect += UnSelectItem;
     }
 
     public void SelectItem()
     {
-        OnSelect.Invoke();
+        PlayerInventory.Instance.SelectedItem.ItemIcon.UnSelectItem();
         PlayerInventory.Instance.SelectedItem = _itemSORef;
         _imageRef.sprite = _selectedSprite;
     }
 
     public void UnSelectItem()
     {
-        PlayerInventory.Instance.SelectedItem = null;
         _imageRef.sprite = _unselectedSprite;
+        PlayerInventory.Instance.SelectedItem = null;
     }
 }
