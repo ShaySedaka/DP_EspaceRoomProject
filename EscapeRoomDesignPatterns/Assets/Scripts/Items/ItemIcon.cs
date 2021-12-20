@@ -1,18 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemIcon : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private ItemSO _itemSORef;
+
+    private Image _imageRef;
+
+    private Sprite _unselectedSprite;
+
+    private Sprite _selectedSprite;
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitializeItemIcon(ItemSO itemSORef)
     {
-        
+        _imageRef = GetComponent<Image>();
+        _itemSORef = itemSORef;
+        _imageRef.sprite = itemSORef.ItemUnselected;
+        _unselectedSprite = itemSORef.ItemUnselected;
+        _selectedSprite = itemSORef.ItemSelected;
+    }
+
+    public void SelectItem()
+    {
+        PlayerInventory.Instance.SelectedItem = _itemSORef;
+        _imageRef.sprite = _selectedSprite;
     }
 }

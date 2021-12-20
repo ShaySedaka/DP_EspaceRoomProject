@@ -12,7 +12,7 @@ public class ItemSO : ScriptableObject
 
     [SerializeField] public Sprite ItemSelected;
 
-    [SerializeField] GameObject _itemIconPrefab;
+    [SerializeField] private GameObject _itemIconPrefab;
 
     public void AddItemToInventory()
     {
@@ -20,6 +20,6 @@ public class ItemSO : ScriptableObject
 
         GameObject newItemIcon = Instantiate(_itemIconPrefab, UIManager.Instance.InventoryContainer.transform);
 
-        newItemIcon.GetComponent<Image>().sprite = ItemUnselected;
+        newItemIcon.GetComponent<ItemIcon>().InitializeItemIcon(this);
     }
 }
