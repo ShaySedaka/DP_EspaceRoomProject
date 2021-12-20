@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class ItemIcon : MonoBehaviour
 
     private Sprite _selectedSprite;
 
+    public static Action OnSelect;
+
     private void Start()
     {
         
@@ -25,11 +28,22 @@ public class ItemIcon : MonoBehaviour
         _imageRef.sprite = itemSORef.ItemUnselected;
         _unselectedSprite = itemSORef.ItemUnselected;
         _selectedSprite = itemSORef.ItemSelected;
+
+        _itemSORef.ItemIcon = this;
+
+        OnSelect += UnSelectItem;
     }
 
     public void SelectItem()
     {
+        OnSelect.Invoke();
         PlayerInventory.Instance.SelectedItem = _itemSORef;
         _imageRef.sprite = _selectedSprite;
+    }
+
+    public void UnSelectItem()
+    {
+        PlayerInventory.Instance.SelectedItem = null;
+        _imageRef.sprite = _unselectedSprite;
     }
 }

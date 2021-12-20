@@ -14,12 +14,16 @@ public class ItemSO : ScriptableObject
 
     [SerializeField] private GameObject _itemIconPrefab;
 
+    [SerializeField] public ItemIcon ItemIcon;
+
     public void AddItemToInventory()
     {
         PlayerInventory.Instance.Inventory.Add(this);
 
-        GameObject newItemIcon = Instantiate(_itemIconPrefab, UIManager.Instance.InventoryContainer.transform);
+        GameObject newItemIconGO = Instantiate(_itemIconPrefab, UIManager.Instance.InventoryContainer.transform);
 
-        newItemIcon.GetComponent<ItemIcon>().InitializeItemIcon(this);
+        ItemIcon = newItemIconGO.GetComponent<ItemIcon>();
+
+        ItemIcon.InitializeItemIcon(this);
     }
 }
