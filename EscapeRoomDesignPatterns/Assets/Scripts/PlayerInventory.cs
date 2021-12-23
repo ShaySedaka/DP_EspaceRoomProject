@@ -26,6 +26,6 @@ public class PlayerInventory : Singleton<PlayerInventory>
 
     private void SelectedItemFollowCursor()
     {
-        _selectedItemCursor.gameObject.transform.position = Input.mousePosition;
+        _selectedItemCursor.gameObject.transform.position = Input.mousePosition - new Vector3(_selectedItemCursor.rectTransform.rect.width, _selectedItemCursor.rectTransform.rect.height, 0);
     }
 }

@@ -34,6 +34,7 @@ public class ItemIcon : MonoBehaviour
 
     public void SelectItem()
     {
+        // Checks if the new item that is pressed is combinable with the currently selected item
         if (_combinesWith != null && PlayerInventory.Instance.SelectedItem != null
              && _combinesWith == PlayerInventory.Instance.SelectedItem.name)
         {
@@ -52,7 +53,7 @@ public class ItemIcon : MonoBehaviour
             PlayerInventory.Instance.SelectedItem = ItemSORef;
             _imageRef.sprite = _selectedSprite;
 
-            //AttachToCursor();
+            AttachToCursor();
         }
         
         
@@ -63,19 +64,19 @@ public class ItemIcon : MonoBehaviour
         _imageRef.sprite = _unselectedSprite;
         PlayerInventory.Instance.SelectedItem = null;
 
-        //DettachToCursor();
+        DettachToCursor();
     }
 
     private void AttachToCursor()
     {
         PlayerInventory.Instance.SelectedItemCursor.sprite = _unselectedSprite;
         PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(true);
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void DettachToCursor()
     {
         PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(false);
-        Cursor.visible = true;
+        //Cursor.visible = true;
     }
 }
