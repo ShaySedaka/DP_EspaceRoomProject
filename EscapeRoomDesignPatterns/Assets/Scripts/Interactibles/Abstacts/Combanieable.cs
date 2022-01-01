@@ -23,16 +23,4 @@ public class Combanieable : Interactible
     {
         gameObject.GetComponent<ItemIcon>().ItemSORef.RemoveItemFromInventory();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

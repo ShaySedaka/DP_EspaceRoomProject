@@ -14,6 +14,11 @@ public class PlayerInventory : Singleton<PlayerInventory>
     public ItemSO SelectedItem { get => _selectedItem; set => _selectedItem = value; }
     public Image SelectedItemCursor { get => _selectedItemCursor; set => _selectedItemCursor = value;}
 
+    private void Start()
+    {
+        _selectedItemCursor.GetComponent<CanvasGroup>().blocksRaycasts = false;
+    }
+
     private void Update()
     {
         if(Input.GetMouseButton(1) && SelectedItem != null)
@@ -26,6 +31,8 @@ public class PlayerInventory : Singleton<PlayerInventory>
 
     private void SelectedItemFollowCursor()
     {
-        _selectedItemCursor.gameObject.transform.position = Input.mousePosition - new Vector3(_selectedItemCursor.rectTransform.rect.width, _selectedItemCursor.rectTransform.rect.height, 0);
+        _selectedItemCursor.gameObject.transform.position = Input.mousePosition 
+            /*- new Vector3(_selectedItemCursor.rectTransform.rect.width, _selectedItemCursor.rectTransform.rect.height, 0)*/
+            ;
     }
 }
