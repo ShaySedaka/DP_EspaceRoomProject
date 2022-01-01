@@ -2,31 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleableItemRequired : Toggleable
+public abstract class ToggleableItemRequired : Toggleable
 {
-    [SerializeField] GameObject _offStateObject;
-    [SerializeField] GameObject _onStateObject;
     [SerializeField] string _requiredItemName;
 
     private bool _itemUsed = false;
 
-    protected override void ToggleOFF()
+    public override void Interact()
     {
-        _offStateObject.SetActive(true);
-        _onStateObject.SetActive(false);
-    }
-
-    protected override void ToggleON()
-    {
-        if (ConditionCheck())
+        if (CurrentToggleState == ToggleState.ON)
         {
-            _offStateObject.SetActive(false);
-            _onStateObject.SetActive(true);
-
+            ToggleOFF();
+            CurrentToggleState = ToggleState.OFF;
+        }
+        else
+        {
+            if (ShouldToggleOn())
+            {
+                ToggleON();
+                CurrentToggleState = ToggleState.ON;
+            }
         }
     }
 
-    private bool ConditionCheck()
+    private bool ShouldToggleOn()
     {
         if( _itemUsed == true)
         {
@@ -40,7 +39,7 @@ public class ToggleableItemRequired : Toggleable
         return false;
     }
 
-    private void UnlockItemFunctionality()
+    protected virtual void UnlockItemFunctionality()
     {
         if (PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName))
         {
