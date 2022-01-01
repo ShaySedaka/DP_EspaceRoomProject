@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed93e45133dfabe459f0daf5dbe73311, type: 3}
-  m_Name: Key
+  m_Name: KeyNote
   m_EditorClassIdentifier: 
-  ItemName: Key
-  ItemUnselected: {fileID: 21300000, guid: 849414f0109db774b9e9856539626cfc, type: 3}
-  ItemSelected: {fileID: 21300000, guid: 194d1512986f90749b9a50da76846945, type: 3}
+  ItemName: KeyNote
+  ItemUnselected: {fileID: 21300000, guid: a7e6a36a32ac7c84c884e4a4444fa6d4, type: 3}
+  ItemSelected: {fileID: 21300000, guid: a7e6a36a32ac7c84c884e4a4444fa6d4, type: 3}
   _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}
   ItemIcon: {fileID: 0}
   _instatiatedUIForItem: {fileID: 0}
-  _combinesWith: Note
-  _combinesInto: {fileID: 11400000, guid: e9f33f4c152933944a3435b3313ace99, type: 2}
+  _combinesWith: 
+  _combinesInto: {fileID: 0}

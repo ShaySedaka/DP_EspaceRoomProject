@@ -18,7 +18,12 @@ public class ItemSO : ScriptableObject
 
     [SerializeField] public GameObject _instatiatedUIForItem;
 
+    [SerializeField] private string _combinesWith;
 
+    [SerializeField] private ItemSO _combinesInto;
+
+    public string CombinesWith { get => _combinesWith; }
+    public ItemSO CombinesInto { get => _combinesInto; }
 
     public void AddItemToInventory()
     {
@@ -33,6 +38,10 @@ public class ItemSO : ScriptableObject
 
     public void RemoveItemFromInventory()
     {
+        if(PlayerInventory.Instance.SelectedItem == this)
+        {
+            ItemIcon.UnSelectItem();
+        }        
         PlayerInventory.Instance.Inventory.Remove(this);
         _instatiatedUIForItem.SetActive(false);
     }

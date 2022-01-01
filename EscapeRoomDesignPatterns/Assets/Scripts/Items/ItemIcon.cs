@@ -6,34 +6,57 @@ using UnityEngine.UI;
 
 public class ItemIcon : MonoBehaviour
 {
+    
     private ItemSO _itemSORef;
     private Image _imageRef;
+    private string _combinesWith;
+    private ItemSO _combinesInto;
     private Sprite _unselectedSprite;
     private Sprite _selectedSprite;
+
+    public ItemSO ItemSORef { get => _itemSORef; private set => _itemSORef = value; }
 
     public void InitializeItemIcon(ItemSO itemSORef)
     {
         _imageRef = GetComponent<Image>();
-        _itemSORef = itemSORef;
+        ItemSORef = itemSORef;
         _imageRef.sprite = itemSORef.ItemUnselected;
         _unselectedSprite = itemSORef.ItemUnselected;
         _selectedSprite = itemSORef.ItemSelected;
+        if(itemSORef.CombinesWith != null && itemSORef.CombinesInto)
+        {
+            _combinesWith = itemSORef.CombinesWith;
+            _combinesInto = itemSORef.CombinesInto;
+        }        
+        ItemSORef.ItemIcon = this;
 
-        _itemSORef.ItemIcon = this;
     }
 
     public void SelectItem()
     {
-        // if another item is selected right now, unselect it
-        if (PlayerInventory.Instance.SelectedItem != null)
+        // Checks if the new item that is pressed is combinable with the currently selected item
+        if (_combinesWith != null && PlayerInventory.Instance.SelectedItem != null
+             && _combinesWith == PlayerInventory.Instance.SelectedItem.name)
         {
-            PlayerInventory.Instance.SelectedItem.ItemIcon.UnSelectItem();
+            _combinesInto.AddItemToInventory();
+            PlayerInventory.Instance.SelectedItem.RemoveItemFromInventory();
+            ItemSORef.RemoveItemFromInventory();
         }
-        //make this the selected item
-        PlayerInventory.Instance.SelectedItem = _itemSORef;
-        _imageRef.sprite = _selectedSprite;
+        else
+        {
+            // if another item is selected right now, unselect it
+            if (PlayerInventory.Instance.SelectedItem != null)
+            {
+                PlayerInventory.Instance.SelectedItem.ItemIcon.UnSelectItem();
+            }
+            //make this the selected item
+            PlayerInventory.Instance.SelectedItem = ItemSORef;
+            _imageRef.sprite = _selectedSprite;
 
-        AttachToCursor();
+            AttachToCursor();
+        }
+        
+        
     }
 
     public void UnSelectItem()
@@ -48,12 +71,12 @@ public class ItemIcon : MonoBehaviour
     {
         PlayerInventory.Instance.SelectedItemCursor.sprite = _unselectedSprite;
         PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(true);
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void DettachToCursor()
     {
         PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(false);
-        Cursor.visible = true;
+        //Cursor.visible = true;
     }
 }
