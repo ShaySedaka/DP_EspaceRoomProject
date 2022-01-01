@@ -20,8 +20,6 @@ public class ToggleableItemRequired : Toggleable
     {
         if (ConditionCheck())
         {
-            UnlockItemFunctionality();
-
             _offStateObject.SetActive(false);
             _onStateObject.SetActive(true);
 
@@ -30,9 +28,13 @@ public class ToggleableItemRequired : Toggleable
 
     private bool ConditionCheck()
     {
-        if( _itemUsed == true || 
-            (PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName)) )
+        if( _itemUsed == true)
         {
+            return true;
+        }
+        else if( PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName) )
+        {
+            UnlockItemFunctionality();
             return true;
         }
         return false;
@@ -42,9 +44,6 @@ public class ToggleableItemRequired : Toggleable
     {
         if (PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName))
         {
-            //ItemSO Selected = PlayerInventory.Instance.SelectedItem;
-            //Selected.ItemIcon.UnSelectItem();
-            //Selected.RemoveItemFromInventory();
             PlayerInventory.Instance.SelectedItem.RemoveItemFromInventory();
             _itemUsed = true;
         }

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    private int _roomID;
-    [SerializeField] private Transform _defaultCameraAngle;
+    [SerializeField] private int _roomID;
+    private Transform _defaultCameraAngle;
     [SerializeField] private List<Transform> _cameraAngles;
+
+    private void Start()
+    {
+        DefaultCameraAngle = CameraAngles[0];
+    }
 
     public int RoomID { get => _roomID; set => _roomID = value; }
     public Transform DefaultCameraAngle { get => _defaultCameraAngle; set => _defaultCameraAngle = value; }

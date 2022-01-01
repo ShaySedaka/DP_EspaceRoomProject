@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomTransfer : MonoBehaviour
+public class RoomTransfer : Interactible
 {
     [SerializeField] CameraStateManager _playerStateManager;
 
     [SerializeField] Room _room1;
     [SerializeField] Room _room2;
+
+    public override void Interact()
+    {
+        MoveBetweenRooms();
+    }
 
     public void MoveBetweenRooms()
     {

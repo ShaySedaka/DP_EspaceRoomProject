@@ -23,15 +23,13 @@ public class CameraStateManager : MonoBehaviour
 
     public void LookRight()
     {
-        _currentCameraState = _currentCameraState.RightSideState;
-        StartCoroutine(MoveCameraToCurrentTranform());
+        StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.RightSideState));
 
     }
 
     public void LookLeft()
     {
-        _currentCameraState = _currentCameraState.LeftSideState;
-        StartCoroutine(MoveCameraToCurrentTranform());
+        StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.LeftSideState, 0.5f));
     }
 
     public void InitializeCameraState()
@@ -40,7 +38,7 @@ public class CameraStateManager : MonoBehaviour
         for (int i = 0; i < CurrentRoom.CameraAngles.Count; i++)
         {
             CameraState cs = new CameraState();
-            cs.CurrentCameraTranform = CurrentRoom.CameraAngles[i];
+            cs.CameraStateTranform = CurrentRoom.CameraAngles[i];
             _RoomCameraStates.Add(cs);
         }
 
@@ -52,27 +50,22 @@ public class CameraStateManager : MonoBehaviour
             cs.RightSideState = _RoomCameraStates[(i + 1) % (_RoomCameraStates.Count)];
         }
 
-        _currentCameraState = _RoomCameraStates[0];
-        StartCoroutine(MoveCameraToCurrentTranform());
+        StartCoroutine(ChangeCurrentCameraStateToTarget(_RoomCameraStates[0]));
     }
 
-    private IEnumerator MoveCameraToCurrentTranform()
+    private IEnumerator ChangeCurrentCameraStateToTarget(CameraState targetCameraState, float transitionTime = 1f)
     {
-
-
-        //turning the camera
-        //_playerCamera.transform.position = _currentCameraState.CurrentCameraTranform.position;
-        //_playerCamera.transform.rotation = _currentCameraState.CurrentCameraTranform.rotation;
-
         float elapsedTime = 0;
-        float waitTime = 1f;
 
-        Vector3 targetPosition = _currentCameraState.CurrentCameraTranform.position;
-        Quaternion targetRotation = _currentCameraState.CurrentCameraTranform.rotation;
+        // Transition between Camera States will always take 1 second
+        float waitTime = transitionTime;
+
+        Vector3 targetPosition = targetCameraState.CameraStateTranform.position;
+        Quaternion targetRotation = targetCameraState.CameraStateTranform.rotation;
 
         while (elapsedTime < waitTime)
         {
-            playerGO.transform.position = Vector3.Slerp(transform.position, targetPosition, elapsedTime/waitTime);
+            playerGO.transform.position = Vector3.MoveTowards(transform.position, targetPosition, elapsedTime/waitTime);
             playerGO.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, elapsedTime / waitTime);
             elapsedTime += Time.deltaTime;
 
@@ -81,6 +74,7 @@ public class CameraStateManager : MonoBehaviour
 
         playerGO.transform.position = targetPosition;
         playerGO.transform.rotation = targetRotation;
+        _currentCameraState = targetCameraState;
         yield return null;
 
     }
