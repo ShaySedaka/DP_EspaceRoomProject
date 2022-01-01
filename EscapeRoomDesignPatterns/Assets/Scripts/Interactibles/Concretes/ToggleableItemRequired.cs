@@ -11,10 +11,8 @@ public class ToggleableItemRequired : Toggleable
 
     protected override void ToggleOFF()
     {
-        //_closedDoor.SetActive(true);
-        //_openDoor.SetActive(false);
-
-        //here will be the code of room transfer
+        _offStateObject.SetActive(true);
+        _onStateObject.SetActive(false);
     }
 
     protected override void ToggleON()
