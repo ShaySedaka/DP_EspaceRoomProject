@@ -18,7 +18,7 @@ public class ToggleableItemRequired : Toggleable
 
     protected override void ToggleON()
     {
-        if (ToggleConditionCheck())
+        if (ConditionCheck())
         {
             UnlockItemFunctionality();
 
@@ -28,9 +28,9 @@ public class ToggleableItemRequired : Toggleable
         }
     }
 
-    private bool ToggleConditionCheck()
+    private bool ConditionCheck()
     {
-        if(_itemUsed == true || 
+        if( _itemUsed == true || 
             (PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName)) )
         {
             return true;
