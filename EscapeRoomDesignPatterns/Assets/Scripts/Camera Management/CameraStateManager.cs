@@ -29,11 +29,13 @@ public class CameraStateManager : MonoBehaviour
 
     public void LookLeft()
     {
-        StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.LeftSideState, 0.5f));
+        StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.LeftSideState));
     }
 
     public void InitializeCameraState()
     {
+        _RoomCameraStates.Clear();
+
         // creating the base CameraState object and adding them to the room state list
         for (int i = 0; i < CurrentRoom.CameraAngles.Count; i++)
         {
