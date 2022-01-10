@@ -8,6 +8,15 @@ public class RoomDoor : ToggleableItemRequired
     [SerializeField] GameObject _onStateObject;
 
     [SerializeField] GameObject _roomTransfer;
+
+    private void Start()
+    {
+        if(CurrentToggleState == ToggleState.ON)
+        {
+            ToggleON();
+        }
+    }
+
     protected override void ToggleOFF()
     {
         Debug.Log("Oops");
