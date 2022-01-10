@@ -390,7 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5368157710724784824}
   m_Layer: 0
-  m_Name: Kitchen Counter
+  m_Name: Static Kitchen Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
