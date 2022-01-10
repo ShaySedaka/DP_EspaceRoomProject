@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class RoomTransfer : Interactible
 {
-    [SerializeField] CameraStateManager _playerStateManager;
+    /*[SerializeField] */ CameraStateManager _playerStateManager;
 
     [SerializeField] Room _room1;
     [SerializeField] Room _room2;
+
+
+    void Start()
+    {
+        _playerStateManager = GameManager.Instance.Player.CameraStateManager;
+    }
 
     public override void Interact()
     {
