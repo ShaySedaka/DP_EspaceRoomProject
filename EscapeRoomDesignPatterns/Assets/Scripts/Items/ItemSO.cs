@@ -27,7 +27,7 @@ public class ItemSO : ScriptableObject
 
     public void AddItemToInventory()
     {
-        PlayerInventory.Instance.Inventory.Add(this);
+        GameManager.Instance.Player.PlayerInventory.Inventory.Add(this);
 
         _instatiatedUIForItem = Instantiate(_itemIconPrefab, UIManager.Instance.InventoryContainer.transform);
         
@@ -38,11 +38,11 @@ public class ItemSO : ScriptableObject
 
     public void RemoveItemFromInventory()
     {
-        if(PlayerInventory.Instance.SelectedItem == this)
+        if(GameManager.Instance.Player.PlayerInventory.SelectedItem == this)
         {
             ItemIcon.UnSelectItem();
-        }        
-        PlayerInventory.Instance.Inventory.Remove(this);
+        }
+        GameManager.Instance.Player.PlayerInventory.Inventory.Remove(this);
         _instatiatedUIForItem.SetActive(false);
     }
 }

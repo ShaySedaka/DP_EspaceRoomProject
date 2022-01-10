@@ -31,7 +31,8 @@ public abstract class ToggleableItemRequired : Toggleable
         {
             return true;
         }
-        else if( PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName) )
+        else if( GameManager.Instance.Player.PlayerInventory.SelectedItem != null &&
+                 GameManager.Instance.Player.PlayerInventory.SelectedItem.name.Equals(_requiredItemName) )
         {
             UnlockItemFunctionality();
             return true;
@@ -41,9 +42,10 @@ public abstract class ToggleableItemRequired : Toggleable
 
     protected virtual void UnlockItemFunctionality()
     {
-        if (PlayerInventory.Instance.SelectedItem != null && PlayerInventory.Instance.SelectedItem.name.Equals(_requiredItemName))
+        if ( GameManager.Instance.Player.PlayerInventory.SelectedItem != null &&
+             GameManager.Instance.Player.PlayerInventory.SelectedItem.name.Equals(_requiredItemName) )
         {
-            PlayerInventory.Instance.SelectedItem.RemoveItemFromInventory();
+            GameManager.Instance.Player.PlayerInventory.SelectedItem.RemoveItemFromInventory();
             _itemUsed = true;
         }
     }

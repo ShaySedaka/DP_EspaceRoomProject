@@ -35,22 +35,22 @@ public class ItemIcon : MonoBehaviour
     public void SelectItem()
     {
         // Checks if the new item that is pressed is combinable with the currently selected item
-        if (_combinesWith != null && PlayerInventory.Instance.SelectedItem != null
-             && _combinesWith == PlayerInventory.Instance.SelectedItem.name)
+        if (_combinesWith != null && GameManager.Instance.Player.PlayerInventory.SelectedItem != null
+             && _combinesWith == GameManager.Instance.Player.PlayerInventory.SelectedItem.name)
         {
             _combinesInto.AddItemToInventory();
-            PlayerInventory.Instance.SelectedItem.RemoveItemFromInventory();
+            GameManager.Instance.Player.PlayerInventory.SelectedItem.RemoveItemFromInventory();
             ItemSORef.RemoveItemFromInventory();
         }
         else
         {
             // if another item is selected right now, unselect it
-            if (PlayerInventory.Instance.SelectedItem != null)
+            if (GameManager.Instance.Player.PlayerInventory.SelectedItem != null)
             {
-                PlayerInventory.Instance.SelectedItem.ItemIcon.UnSelectItem();
+                GameManager.Instance.Player.PlayerInventory.SelectedItem.ItemIcon.UnSelectItem();
             }
             //make this the selected item
-            PlayerInventory.Instance.SelectedItem = ItemSORef;
+            GameManager.Instance.Player.PlayerInventory.SelectedItem = ItemSORef;
             _imageRef.sprite = _selectedSprite;
 
             AttachToCursor();
@@ -62,21 +62,21 @@ public class ItemIcon : MonoBehaviour
     public void UnSelectItem()
     {
         _imageRef.sprite = _unselectedSprite;
-        PlayerInventory.Instance.SelectedItem = null;
+        GameManager.Instance.Player.PlayerInventory.SelectedItem = null;
 
         DettachToCursor();
     }
 
     private void AttachToCursor()
     {
-        PlayerInventory.Instance.SelectedItemCursor.sprite = _unselectedSprite;
-        PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(true);
+        GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.sprite = _unselectedSprite;
+        GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.gameObject.SetActive(true);
         //Cursor.visible = false;
     }
 
     private void DettachToCursor()
     {
-        PlayerInventory.Instance.SelectedItemCursor.gameObject.SetActive(false);
+        GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.gameObject.SetActive(false);
         //Cursor.visible = true;
     }
 }

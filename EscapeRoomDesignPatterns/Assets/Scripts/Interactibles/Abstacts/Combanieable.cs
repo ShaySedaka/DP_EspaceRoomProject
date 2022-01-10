@@ -10,9 +10,9 @@ public class Combanieable : Interactible
 
     public override void Interact()
     {
-        if(PlayerInventory.Instance.SelectedItem.name.Equals(_itemToCombineWith))
+        if(GameManager.Instance.Player.PlayerInventory.SelectedItem.name.Equals(_itemToCombineWith))
         {
-            PlayerInventory.Instance.SelectedItem.RemoveItemFromInventory();
+            GameManager.Instance.Player.PlayerInventory.SelectedItem.RemoveItemFromInventory();
             RemoveThisItem();
         }
 
