@@ -1845,6 +1845,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8033275005174281412}
+  - component: {fileID: 7175743516506901283}
+  - component: {fileID: 6865173460924468333}
   m_Layer: 0
   m_Name: Batteries
   m_TagString: Untagged
@@ -1860,7 +1862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8813355336319536900}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 0.004771103, z: -0.00422895}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00422895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9156756952201495509}
@@ -1869,3 +1871,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &7175743516506901283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8813355336319536900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd01abea29458724cbc937aea4079939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 11400000, guid: 78f75d2bd0faaab4aab611383421c80c, type: 2}
+--- !u!65 &6865173460924468333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8813355336319536900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.3195243, y: 4.0102887, z: 1.1111192}
+  m_Center: {x: 2.5323346, y: -0.12772202, z: -0.055559695}

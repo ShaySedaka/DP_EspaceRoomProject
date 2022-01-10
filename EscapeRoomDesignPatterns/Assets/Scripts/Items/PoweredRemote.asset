@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed93e45133dfabe459f0daf5dbe73311, type: 3}
+  m_Name: PoweredRemote
+  m_EditorClassIdentifier: 
+  ItemName: PoweredRemote
+  ItemUnselected: {fileID: 21300000, guid: e369fec8c2859624aad2b26788ceb3a6, type: 3}
+  ItemSelected: {fileID: 21300000, guid: e369fec8c2859624aad2b26788ceb3a6, type: 3}
+  _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}
+  ItemIcon: {fileID: 0}
+  _instatiatedUIForItem: {fileID: 0}
+  _combinesWith: 
+  _combinesInto: {fileID: 0}

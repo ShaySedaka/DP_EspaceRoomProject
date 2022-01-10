@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377197493763501601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.221923, y: -3.0789413, z: -0.76629853}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3029751445445518980}
@@ -429,6 +429,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5825800554216102700}
+  - component: {fileID: 2287996704681167728}
+  - component: {fileID: 3510986136557382101}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Untagged
@@ -452,6 +454,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2287996704681167728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157345850019057633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1c26b347825eb4791291874f869f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentToggleState: 0
+  _offStateObject: {fileID: 3454865618432559790}
+  _onStateObject: {fileID: 377197493763501601}
+--- !u!65 &3510986136557382101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157345850019057633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.012301, y: 4.1505785, z: 2.7221892}
+  m_Center: {x: 0.41373968, y: 1.5752894, z: 0.8688477}
 --- !u!1 &2164934575827348509
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3454865618432559790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.221923, y: -3.0789413, z: -0.76629853}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1453392687190493930}
