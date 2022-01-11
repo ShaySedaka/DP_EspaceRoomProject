@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Remote
   m_EditorClassIdentifier: 
   ItemName: Remote
-  ItemUnselected: {fileID: 21300000, guid: 439ad5d516e70774b9db47b43b4624df, type: 3}
-  ItemSelected: {fileID: 21300000, guid: 439ad5d516e70774b9db47b43b4624df, type: 3}
+  ItemUnselected: {fileID: 21300000, guid: 2a9fd09a078058f46be08f019b0b0b1c, type: 3}
+  ItemSelected: {fileID: 21300000, guid: 2a9fd09a078058f46be08f019b0b0b1c, type: 3}
   _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}
   ItemIcon: {fileID: 0}
   _instatiatedUIForItem: {fileID: 0}

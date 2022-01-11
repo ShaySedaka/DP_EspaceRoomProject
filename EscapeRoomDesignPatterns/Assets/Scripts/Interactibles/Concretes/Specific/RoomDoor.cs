@@ -24,8 +24,7 @@ public class RoomDoor : ToggleableItemRequired
 
     protected override void ToggleON()
     {
-        //GetComponent<BoxCollider>().enabled = false;
-        this.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         _offStateObject.SetActive(false);
         _onStateObject.SetActive(true);
         _roomTransfer.SetActive(true);

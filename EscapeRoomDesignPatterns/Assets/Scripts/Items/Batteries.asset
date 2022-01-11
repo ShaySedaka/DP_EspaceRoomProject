@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Batteries
   m_EditorClassIdentifier: 
   ItemName: Batteries
-  ItemUnselected: {fileID: 21300000, guid: 3ba678c2321c6134aa69caebd4f00de0, type: 3}
-  ItemSelected: {fileID: 21300000, guid: 3ba678c2321c6134aa69caebd4f00de0, type: 3}
+  ItemUnselected: {fileID: 21300000, guid: a2fbe6e4b34fec84e8cae1ed3cdc142e, type: 3}
+  ItemSelected: {fileID: 21300000, guid: a2fbe6e4b34fec84e8cae1ed3cdc142e, type: 3}
   _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}
   ItemIcon: {fileID: 0}
   _instatiatedUIForItem: {fileID: 0}
