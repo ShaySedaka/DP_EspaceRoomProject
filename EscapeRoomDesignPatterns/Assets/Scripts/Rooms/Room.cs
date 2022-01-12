@@ -6,10 +6,12 @@ public class Room : MonoBehaviour
 {
     [SerializeField] private int _roomID;
     private Transform _defaultCameraAngle;
-    [SerializeField] private List<Transform> _cameraAngles;
+    private List<Transform> _cameraAngles = new List<Transform>();
+    [SerializeField] private GameObject _roomCameraAnglesGO;
 
-    private void Start()
+    private void Awake()
     {
+        InitializeCameraAngles();
         InitializeLookDownAngle();
         DefaultCameraAngle = CameraAngles[0];
     }
@@ -28,5 +30,21 @@ public class Room : MonoBehaviour
                 transform.eulerAngles.z
             );
         }
+    }
+
+    private void InitializeCameraAngles()
+    {
+        Transform[] cameraAnglesTransforms = _roomCameraAnglesGO.GetComponentsInChildren<Transform>();
+        foreach (Transform childTransform in cameraAnglesTransforms)
+        {
+            _cameraAngles.Add(childTransform);
+        }
+
+        /* 
+           GetComponentsInChildren<T>() returns the T component of the parent as well, if it exists.
+           Because the parent has a transform as well, it will add the parent's transform to the list too.
+           Since we dont want that, we remove the first cell in the List, since the first cell always contains the parent 
+        */
+        _cameraAngles.Remove(_cameraAngles[0]);
     }
 }
