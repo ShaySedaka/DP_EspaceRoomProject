@@ -16,6 +16,24 @@ public class ItemIcon : MonoBehaviour
 
     public ItemSO ItemSORef { get => _itemSORef; private set => _itemSORef = value; }
 
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButton(1) && GameManager.Instance.Player.PlayerInventory.SelectedItem == null)
+        {
+            ActivateItemDescription(_itemSORef);
+        }
+    }
+
+    private void ActivateItemDescription(ItemSO itemSORef)
+    {
+        ItemTooltip itemTooltip = GameManager.Instance.ItemTooltip;
+
+
+
+        itemTooltip.gameObject.SetActive(true);
+        itemTooltip.InitializeItemToolTip(itemSORef);
+    }
+
     public void InitializeItemIcon(ItemSO itemSORef)
     {
         _imageRef = GetComponent<Image>();

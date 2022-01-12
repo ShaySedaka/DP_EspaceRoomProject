@@ -10,9 +10,11 @@ public class PlayerInventory : MonoBehaviour
     public HashSet<ItemSO> Inventory = new HashSet<ItemSO>();
 
     private ItemSO _selectedItem;
+    private ItemSO _hoveredItem;
 
     public ItemSO SelectedItem { get => _selectedItem; set => _selectedItem = value; }
     public Image SelectedItemCursor { get => _selectedItemCursor; set => _selectedItemCursor = value;}
+    public ItemSO HoveredItem { get => _hoveredItem; set => _hoveredItem = value; }
 
     private void Start()
     {
@@ -21,9 +23,12 @@ public class PlayerInventory : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(1) && SelectedItem != null)
+        if(Input.GetMouseButton(1))
         {
-            SelectedItem.ItemIcon.UnSelectItem();
+            if (SelectedItem != null)
+            {
+                SelectedItem.ItemIcon.UnSelectItem();
+            }
         }
 
         SelectedItemFollowCursor();
@@ -31,8 +36,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void SelectedItemFollowCursor()
     {
-        _selectedItemCursor.gameObject.transform.position = Input.mousePosition 
-            /*- new Vector3(_selectedItemCursor.rectTransform.rect.width, _selectedItemCursor.rectTransform.rect.height, 0)*/
-            ;
+        _selectedItemCursor.gameObject.transform.position = Input.mousePosition;
     }
 }
