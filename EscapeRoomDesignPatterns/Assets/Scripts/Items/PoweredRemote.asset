@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed93e45133dfabe459f0daf5dbe73311, type: 3}
   m_Name: PoweredRemote
   m_EditorClassIdentifier: 
-  ItemName: PoweredRemote
+  ItemName: Powered Remote
   ItemUnselected: {fileID: 21300000, guid: e369fec8c2859624aad2b26788ceb3a6, type: 3}
   ItemSelected: {fileID: 21300000, guid: e369fec8c2859624aad2b26788ceb3a6, type: 3}
   _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}

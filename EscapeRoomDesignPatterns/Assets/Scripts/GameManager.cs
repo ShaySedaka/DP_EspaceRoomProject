@@ -10,4 +10,9 @@ public class GameManager : Singleton<GameManager>
 
     public Player Player { get => _player; set => _player = value; }
     public ItemTooltip ItemTooltip { get => _itemTooltip; set => _itemTooltip = value; }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

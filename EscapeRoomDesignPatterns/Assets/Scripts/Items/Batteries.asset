@@ -18,5 +18,6 @@ MonoBehaviour:
   _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}
   ItemIcon: {fileID: 0}
   _instatiatedUIForItem: {fileID: 0}
-  _combinesWith: Remote
-  _combinesInto: {fileID: 11400000, guid: d937002b75673c642bec985e8b983b6e, type: 2}
+  CombinesWith: Remote
+  CombinesInto: {fileID: 11400000, guid: d937002b75673c642bec985e8b983b6e, type: 2}
+  Description: 

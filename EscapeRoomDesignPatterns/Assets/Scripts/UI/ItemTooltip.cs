@@ -7,13 +7,12 @@ using UnityEngine.UI;
 public class ItemTooltip : MonoBehaviour
 {
     [SerializeField] private Image _itemImage;
-    [SerializeField] private TextMeshProUGUI _itemName;
     [SerializeField] private TextMeshProUGUI _itemDescription;
 
     public void InitializeItemToolTip(ItemSO itemSO)
     {
         _itemImage.sprite = itemSO.ItemSelected;
-        _itemName.text = itemSO.name;
+        _itemDescription.text = itemSO.Description;
     }
 
     public void ExitItemTooltip()

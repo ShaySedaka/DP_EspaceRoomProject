@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/ItemSO", order = 1)]
 public class ItemSO : ScriptableObject
 {
-    [SerializeField] string ItemName;
+    [SerializeField] public string ItemName;
 
     [SerializeField] public Sprite ItemUnselected;
 
@@ -18,12 +18,11 @@ public class ItemSO : ScriptableObject
 
     [SerializeField] public GameObject _instatiatedUIForItem;
 
-    [SerializeField] private string _combinesWith;
+    [SerializeField] public string CombinesWith;
 
-    [SerializeField] private ItemSO _combinesInto;
+    [SerializeField] public ItemSO CombinesInto;
 
-    public string CombinesWith { get => _combinesWith; }
-    public ItemSO CombinesInto { get => _combinesInto; }
+    [SerializeField] public string Description;
 
     public void AddItemToInventory()
     {
