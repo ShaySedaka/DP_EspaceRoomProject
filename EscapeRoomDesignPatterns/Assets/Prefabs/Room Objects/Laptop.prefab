@@ -267,13 +267,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2784622803859802075}
+  - component: {fileID: 6408143089874546766}
+  - component: {fileID: 9006110869997940515}
   m_Layer: 0
   m_Name: Needs Password
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2784622803859802075
 Transform:
   m_ObjectHideFlags: 0
@@ -296,6 +298,34 @@ Transform:
   m_Father: {fileID: 1804299324511371118}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6408143089874546766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259437148779752068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0548112, y: 1.2772031, z: 1.6335853}
+  m_Center: {x: -0.03073752, y: 0.49997973, z: -0.3167928}
+--- !u!114 &9006110869997940515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259437148779752068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe303811e84b0048b6a0aaae913bf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentToggleState: 1
+  _requiredItemName: Disk
+  _winCanvas: {fileID: 0}
 --- !u!1 &1279090326315523407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,13 +2741,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6496897365679493636}
+  - component: {fileID: 4816567729493822827}
+  - component: {fileID: 3625738598960358970}
   m_Layer: 0
   m_Name: No Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6496897365679493636
 Transform:
   m_ObjectHideFlags: 0
@@ -2738,6 +2770,35 @@ Transform:
   m_Father: {fileID: 1804299324511371118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4816567729493822827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582293568581025373}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0548112, y: 1.2772031, z: 1.6335853}
+  m_Center: {x: -0.03073752, y: 0.49997973, z: -0.3167928}
+--- !u!114 &3625738598960358970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582293568581025373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f72a46df7a1c8d4187b6dcf055ff6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentToggleState: 0
+  _requiredItemName: Charger
+  _closedGameObject: {fileID: 8582293568581025373}
+  _openGameObject: {fileID: 1259437148779752068}
 --- !u!1 &8814865366033275467
 GameObject:
   m_ObjectHideFlags: 0

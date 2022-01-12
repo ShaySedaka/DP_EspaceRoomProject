@@ -19,4 +19,5 @@ public class ToggleableKitchenCounter : Toggleable
         _closedGameObject.SetActive(false);
         _openGameObject.SetActive(true);
     }
+
 }
