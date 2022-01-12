@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
-public class ItemIcon : MonoBehaviour
+public class ItemIcon : MonoBehaviour, IPointerClickHandler
 {
     
     private ItemSO _itemSORef;
@@ -14,24 +16,15 @@ public class ItemIcon : MonoBehaviour
     private Sprite _unselectedSprite;
     private Sprite _selectedSprite;
 
+    [SerializeField] private UnityEvent _onLeftClick;
+    [SerializeField] private UnityEvent _onRightClick;
+
     public ItemSO ItemSORef { get => _itemSORef; private set => _itemSORef = value; }
 
-    private void OnMouseOver()
+    public void ActivateItemDescription()
     {
-        if (Input.GetMouseButton(1) && GameManager.Instance.Player.PlayerInventory.SelectedItem == null)
-        {
-            ActivateItemDescription(_itemSORef);
-        }
-    }
-
-    private void ActivateItemDescription(ItemSO itemSORef)
-    {
-        ItemTooltip itemTooltip = GameManager.Instance.ItemTooltip;
-
-
-
-        itemTooltip.gameObject.SetActive(true);
-        itemTooltip.InitializeItemToolTip(itemSORef);
+        GameManager.Instance.ItemTooltip.gameObject.SetActive(true);
+        GameManager.Instance.ItemTooltip.InitializeItemToolTip(_itemSORef);
     }
 
     public void InitializeItemIcon(ItemSO itemSORef)
@@ -97,4 +90,19 @@ public class ItemIcon : MonoBehaviour
         GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.gameObject.SetActive(false);
         //Cursor.visible = true;
     }
+
+    
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            _onLeftClick.Invoke();
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            _onRightClick.Invoke();
+        }
+    }
 }
+

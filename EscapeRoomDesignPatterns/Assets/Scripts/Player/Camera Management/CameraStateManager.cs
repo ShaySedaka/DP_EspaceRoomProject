@@ -11,6 +11,8 @@ public class CameraStateManager : MonoBehaviour
     [SerializeField] float _cameraLerpSpeed = 0.5f;
     private GameObject playerGO;
 
+    private bool _isLerping = false;
+
     private List<CameraState> _RoomCameraStates = new List<CameraState>();
 
     public Room CurrentRoom { get => _currentRoom; set => _currentRoom = value; }
@@ -23,13 +25,18 @@ public class CameraStateManager : MonoBehaviour
 
     public void LookRight()
     {
-        StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.RightSideState));
-
+        if(!_isLerping)
+        {
+            StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.RightSideState));
+        }
     }
 
     public void LookLeft()
     {
-        StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.LeftSideState));
+        if (!_isLerping)
+        {
+            StartCoroutine(ChangeCurrentCameraStateToTarget(_currentCameraState.LeftSideState));
+        }
     }
 
     public void InitializeCameraState()
@@ -55,7 +62,7 @@ public class CameraStateManager : MonoBehaviour
         StartCoroutine(ChangeCurrentCameraStateToTarget(_RoomCameraStates[0]));
     }
 
-    private IEnumerator ChangeCurrentCameraStateToTarget(CameraState targetCameraState, float transitionTime = 1f)
+    private IEnumerator ChangeCurrentCameraStateToTarget(CameraState targetCameraState, float transitionTime = 1.5f)
     {
         float elapsedTime = 0;
 
@@ -65,14 +72,16 @@ public class CameraStateManager : MonoBehaviour
         Vector3 targetPosition = targetCameraState.CameraStateTranform.position;
         Quaternion targetRotation = targetCameraState.CameraStateTranform.rotation;
 
-        while (elapsedTime < waitTime)
+        _isLerping = true;
+        while (elapsedTime <= waitTime)
         {
-            playerGO.transform.position = Vector3.MoveTowards(transform.position, targetPosition, elapsedTime/waitTime);
+            playerGO.transform.position = Vector3.Lerp(transform.position, targetPosition, elapsedTime / waitTime);
             playerGO.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, elapsedTime / waitTime);
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
+        _isLerping = false;
 
         playerGO.transform.position = targetPosition;
         playerGO.transform.rotation = targetRotation;
