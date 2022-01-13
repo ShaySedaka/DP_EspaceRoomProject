@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleableKitchenCounter : Toggleable
+public class ToggleableGeneric : Toggleable
 {
     [SerializeField] GameObject _closedGameObject;
     [SerializeField] GameObject _openGameObject;
