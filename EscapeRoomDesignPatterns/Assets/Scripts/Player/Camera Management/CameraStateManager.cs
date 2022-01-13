@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class CameraStateManager : MonoBehaviour
 {
-    [SerializeField]  private Room _currentRoom;
+    [SerializeField] private Room _currentRoom;
     [SerializeField] private CameraState _currentCameraState;
-
+    private List<CameraState> _roomCameraStates = new List<CameraState>();
     private bool _isLerping = false;
-
-    private List<CameraState> _RoomCameraStates = new List<CameraState>();
 
     public Room CurrentRoom { get => _currentRoom; set => _currentRoom = value; }
 
@@ -37,25 +35,25 @@ public class CameraStateManager : MonoBehaviour
 
     public void InitializeCameraState()
     {
-        _RoomCameraStates.Clear();
+        _roomCameraStates.Clear();
 
         // creating the base CameraState object and adding them to the room state list
         for (int i = 0; i < CurrentRoom.CameraAngles.Count; i++)
         {
             CameraState cs = new CameraState();
             cs.CameraStateTranform = CurrentRoom.CameraAngles[i];
-            _RoomCameraStates.Add(cs);
+            _roomCameraStates.Add(cs);
         }
 
         // connecting the state in the room state list cyclicaly 
-        for (int i = 0; i < _RoomCameraStates.Count; i++)
+        for (int i = 0; i < _roomCameraStates.Count; i++)
         {
-            CameraState cs = _RoomCameraStates[i];
-            cs.LeftSideState = _RoomCameraStates[(i-1 >= 0) ? (i-1) : (_RoomCameraStates.Count - 1)];
-            cs.RightSideState = _RoomCameraStates[(i + 1) % (_RoomCameraStates.Count)];
+            CameraState cs = _roomCameraStates[i];
+            cs.LeftSideState = _roomCameraStates[(i-1 >= 0) ? (i-1) : (_roomCameraStates.Count - 1)];
+            cs.RightSideState = _roomCameraStates[(i + 1) % (_roomCameraStates.Count)];
         }
 
-        StartCoroutine(ChangeCurrentCameraStateToTarget(_RoomCameraStates[0]));
+        StartCoroutine(ChangeCurrentCameraStateToTarget(_roomCameraStates[0]));
     }
 
     private IEnumerator ChangeCurrentCameraStateToTarget(CameraState targetCameraState, float transitionTime = 1.5f)
