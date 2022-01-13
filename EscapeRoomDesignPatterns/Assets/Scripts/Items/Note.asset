@@ -18,5 +18,8 @@ MonoBehaviour:
   _itemIconPrefab: {fileID: 5256342353237643204, guid: bd3e9bcb903868945b4dba36aa8e0ef2, type: 3}
   ItemIcon: {fileID: 0}
   _instatiatedUIForItem: {fileID: 0}
-  _combinesWith: Key
-  _combinesInto: {fileID: 11400000, guid: e9f33f4c152933944a3435b3313ace99, type: 2}
+  CombinesWith: 
+  CombinesInto: {fileID: 0}
+  Description: Note was used to test Collectible. It also uses  different s[rites
+    when selected/unselected, as an example of the feature (which we ended up not
+    using in other items, due to time constraints)
