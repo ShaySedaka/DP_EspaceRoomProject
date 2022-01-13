@@ -11,8 +11,6 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
     
     private ItemSO _itemSORef;
     private Image _imageRef;
-    private string _combinesWith;
-    private ItemSO _combinesInto;
     private Sprite _unselectedSprite;
     private Sprite _selectedSprite;
 
@@ -23,8 +21,8 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
 
     public void ActivateItemDescription()
     {
-        GameManager.Instance.ItemTooltip.gameObject.SetActive(true);
-        GameManager.Instance.ItemTooltip.InitializeItemToolTip(_itemSORef);
+        UIManager.Instance.ItemTooltip.gameObject.SetActive(true);
+        UIManager.Instance.ItemTooltip.InitializeItemToolTip(_itemSORef);
     }
 
     public void InitializeItemIcon(ItemSO itemSORef)
@@ -34,11 +32,6 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
         _imageRef.sprite = itemSORef.ItemUnselected;
         _unselectedSprite = itemSORef.ItemUnselected;
         _selectedSprite = itemSORef.ItemSelected;
-        if(itemSORef.CombinesWith != null && itemSORef.CombinesInto)
-        {
-            _combinesWith = itemSORef.CombinesWith;
-            _combinesInto = itemSORef.CombinesInto;
-        }        
         ItemSORef.ItemIcon = this;
 
     }
@@ -46,10 +39,10 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
     public void SelectItem()
     {
         // Checks if the new item that is pressed is combinable with the currently selected item
-        if (_combinesWith != null && GameManager.Instance.Player.PlayerInventory.SelectedItem != null
-             && _combinesWith == GameManager.Instance.Player.PlayerInventory.SelectedItem.name)
+        if (ItemSORef.CombinesWith != null && GameManager.Instance.Player.PlayerInventory.SelectedItem != null
+             && ItemSORef.CombinesWith == GameManager.Instance.Player.PlayerInventory.SelectedItem.name)
         {
-            _combinesInto.AddItemToInventory();
+            ItemSORef.CombinesInto.AddItemToInventory();
             GameManager.Instance.Player.PlayerInventory.SelectedItem.RemoveItemFromInventory();
             ItemSORef.RemoveItemFromInventory();
         }
@@ -75,7 +68,7 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
         _imageRef.sprite = _unselectedSprite;
         GameManager.Instance.Player.PlayerInventory.SelectedItem = null;
 
-        DettachToCursor();
+        DettachFromCursor();
     }
 
     private void AttachToCursor()
@@ -85,7 +78,7 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
         //Cursor.visible = false;
     }
 
-    private void DettachToCursor()
+    private void DettachFromCursor()
     {
         GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.gameObject.SetActive(false);
         //Cursor.visible = true;

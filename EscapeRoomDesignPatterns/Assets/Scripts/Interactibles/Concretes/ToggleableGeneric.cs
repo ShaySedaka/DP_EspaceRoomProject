@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ToggleableGeneric : Toggleable
 {
-    [SerializeField] GameObject _closedGameObject;
-    [SerializeField] GameObject _openGameObject;
+    [SerializeField] private GameObject _closedGameObject;
+    [SerializeField] private GameObject _openGameObject;
 
 
     protected override void ToggleOFF()

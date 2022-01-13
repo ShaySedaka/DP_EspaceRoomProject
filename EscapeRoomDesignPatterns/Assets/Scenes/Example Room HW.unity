@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9037780}
+  - component: {fileID: 9037781}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -156,6 +157,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9037781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9d2682591910d48bb8c677dbf29dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryContainer: {fileID: 329880335}
+  _itemTooltip: {fileID: 125147199}
 --- !u!1 &39520426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1433,6 @@ GameObject:
   - component: {fileID: 673523703}
   - component: {fileID: 673523702}
   - component: {fileID: 673523701}
-  - component: {fileID: 673523705}
   m_Layer: 5
   m_Name: HUD Canvas
   m_TagString: Untagged
@@ -1510,19 +1524,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &673523705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673523700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b9d2682591910d48bb8c677dbf29dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InventoryContainer: {fileID: 329880335}
 --- !u!1001 &691926652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3602,7 +3603,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 977385217}
-  _itemTooltip: {fileID: 125147199}
 --- !u!4 &1367030443
 Transform:
   m_ObjectHideFlags: 0
@@ -4997,13 +4997,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294954231280951466}
-  m_LocalRotation: {x: 0.0053099776, y: 0.91775656, z: 0.0022975577, w: 0.39710125}
-  m_LocalPosition: {x: 4.09, y: 1.55, z: 1.41}
+  m_LocalRotation: {x: 0.068648845, y: 0.87158597, z: 0.038114574, w: 0.48391384}
+  m_LocalPosition: {x: 4.01, y: 1.5, z: 1.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 294954232282979236}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 133.205, z: 0.663}
+  m_LocalEulerAnglesHint: {x: 0, y: 121.921, z: 9.007}
 --- !u!4 &294954231480482572
 Transform:
   m_ObjectHideFlags: 0

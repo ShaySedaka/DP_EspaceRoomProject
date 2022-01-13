@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cupboard : ToggleableItemRequired
+public class CupboardDoors : ToggleableItemRequired
 {
     [SerializeField] private GameObject _rightDoorCylinder;
     [SerializeField] private GameObject _leftDoorCylinder;
