@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] private int _roomID;
     private Transform _defaultCameraAngle;
     private List<Transform> _cameraAngles = new List<Transform>();
+    
+    [SerializeField] private int _roomID;
     [SerializeField] private GameObject _roomCameraAnglesGO;
+
+    public Transform DefaultCameraAngle { get => _defaultCameraAngle; set => _defaultCameraAngle = value; }
+    public List<Transform> CameraAngles { get => _cameraAngles; set => _cameraAngles = value; }
+    public int RoomID { get => _roomID; set => _roomID = value; }
 
     private void Awake()
     {
@@ -15,10 +20,6 @@ public class Room : MonoBehaviour
         InitializeLookDownAngle();
         DefaultCameraAngle = CameraAngles[0];
     }
-
-    public int RoomID { get => _roomID; set => _roomID = value; }
-    public Transform DefaultCameraAngle { get => _defaultCameraAngle; set => _defaultCameraAngle = value; }
-    public List<Transform> CameraAngles { get => _cameraAngles; set => _cameraAngles = value; }
 
     private void InitializeLookDownAngle()
     {
@@ -40,11 +41,10 @@ public class Room : MonoBehaviour
             _cameraAngles.Add(childTransform);
         }
 
-        /* 
+        /** 
            GetComponentsInChildren<T>() returns the T component of the parent as well, if it exists.
-           Because the parent has a transform as well, it will add the parent's transform to the list too.
-           Since we dont want that, we remove the first cell in the List, since the first cell always contains the parent 
-        */
+           Since we dont want that, we remove the parent (first cell) in the List
+        **/
         _cameraAngles.Remove(_cameraAngles[0]);
     }
 }

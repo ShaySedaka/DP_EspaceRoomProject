@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] Image _selectedItemCursor;
+    [SerializeField] private Image _selectedItemCursor;
 
     public HashSet<ItemSO> Inventory = new HashSet<ItemSO>();
 
     private ItemSO _selectedItem;
-    private ItemSO _hoveredItem;
 
-    public ItemSO SelectedItem { get => _selectedItem; set => _selectedItem = value; }
     public Image SelectedItemCursor { get => _selectedItemCursor; set => _selectedItemCursor = value;}
-    public ItemSO HoveredItem { get => _hoveredItem; set => _hoveredItem = value; }
+    public ItemSO SelectedItem { get => _selectedItem; set => _selectedItem = value; }
 
     private void Start()
     {

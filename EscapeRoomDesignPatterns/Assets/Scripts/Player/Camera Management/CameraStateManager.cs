@@ -6,10 +6,7 @@ using UnityEngine;
 public class CameraStateManager : MonoBehaviour
 {
     [SerializeField]  private Room _currentRoom;
-    [SerializeField] CameraState _currentCameraState;
-    [SerializeField] Camera _playerCamera;
-    [SerializeField] float _cameraLerpSpeed = 0.5f;
-    private GameObject playerGO;
+    [SerializeField] private CameraState _currentCameraState;
 
     private bool _isLerping = false;
 
@@ -19,7 +16,6 @@ public class CameraStateManager : MonoBehaviour
 
     void Start()
     {
-        playerGO = _playerCamera.transform.parent.gameObject;
         InitializeCameraState();
     }
 
@@ -75,16 +71,16 @@ public class CameraStateManager : MonoBehaviour
         _isLerping = true;
         while (elapsedTime <= waitTime)
         {
-            playerGO.transform.position = Vector3.Lerp(transform.position, targetPosition, elapsedTime / waitTime);
-            playerGO.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, elapsedTime / waitTime);
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, elapsedTime / waitTime);
+            gameObject.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, elapsedTime / waitTime);
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
         _isLerping = false;
 
-        playerGO.transform.position = targetPosition;
-        playerGO.transform.rotation = targetRotation;
+        gameObject.transform.position = targetPosition;
+        gameObject.transform.rotation = targetRotation;
         _currentCameraState = targetCameraState;
         yield return null;
 

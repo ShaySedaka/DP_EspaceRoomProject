@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RoomTransfer : Interactible
 {
-    /*[SerializeField]*/ CameraStateManager _playerStateManager;
+    private CameraStateManager _playerStateManager;
 
-    [SerializeField] Room _room1;
-    [SerializeField] Room _room2;
+    [SerializeField] private Room _room1;
+    [SerializeField] private Room _room2;
 
      
     void Start()
@@ -17,10 +17,10 @@ public class RoomTransfer : Interactible
 
     public override void Interact()
     {
-        MoveBetweenRooms();
+        HandleRoomTransfer();
     }
 
-    public void MoveBetweenRooms()
+    private void HandleRoomTransfer()
     {
         int currentRoomID = _playerStateManager.CurrentRoom.RoomID;
 

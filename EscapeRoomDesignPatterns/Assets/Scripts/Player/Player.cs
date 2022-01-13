@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private PlayerInventory _inventory;
+    private PlayerInventory _playerInventory;
     private CameraStateManager _cameraStateManager;
 
-    public PlayerInventory PlayerInventory { get => _inventory; set => _inventory = value; }
+    public PlayerInventory PlayerInventory { get => _playerInventory; set => _playerInventory = value; }
     public CameraStateManager CameraStateManager { get => _cameraStateManager; set => _cameraStateManager = value; }
 
     // Start is called before the first frame update
