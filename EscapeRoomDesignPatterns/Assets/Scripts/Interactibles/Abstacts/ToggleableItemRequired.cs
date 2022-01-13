@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ToggleableItemRequired : Toggleable
 {
-    [SerializeField] string _requiredItemName;
+    [SerializeField] private string _requiredItemName;
 
     private bool _itemUsed = false;
 
