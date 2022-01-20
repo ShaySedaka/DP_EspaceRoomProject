@@ -75,13 +75,13 @@ public class ItemIcon : MonoBehaviour, IPointerClickHandler
     {
         GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.sprite = _unselectedSprite;
         GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.gameObject.SetActive(true);
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 
     private void DettachFromCursor()
     {
         GameManager.Instance.Player.PlayerInventory.SelectedItemCursor.gameObject.SetActive(false);
-        //Cursor.visible = true;
+        Cursor.visible = true;
     }
 
     
